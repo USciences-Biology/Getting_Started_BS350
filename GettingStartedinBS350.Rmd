@@ -13,16 +13,21 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## What are Git, Github, and Github Desktop
-**Git** is a *version-control* system that is free and open-source. Version control allows users to track changes in code and documents and revert back to older versions of the document. These functionalities also help to coordinate work among teams - different people can contribute changes to the same code or document and Git will track who changed what and when. If a change is made and the team does not want to keep the resulting code after the change, they can revert to an earlier version.  
+**Git** is a *version-control* system that is free and open-source. Version control allows users to track changes in code and documents and revert back to older versions of the document. These functionalities also help to coordinate work among teams - different people can contribute changes to the same code or document and Git will track who changed what and when. If a change is made and the team does not want to keep the resulting code after the change, they can revert to an earlier version. Git is an industry-standard tool that is used by many companies and labs.
 
 **Github** is a web-based user interface for Git, allowing people to store their code and projects in an accessible way. We will work with a part of Github called Github classroom to distribute, track, and collect assignments. 
 
 **Github Desktop** is a guided-user interface (GUI) that lets people perform git tasks via clicking an interface, rather than coding from the command line. We will be using Github Desktop to perform version control using git.
 
 ## Installing Github Desktop
-1. Create a Github account following the directions outlined here: https://git-scm.com/book/en/v2/GitHub-Account-Setup-and-Configuration  
 
-    **Note - there is no need to configure SSH access, so skip the SSH steps in the protocol**
+1. For all operating systems (MacOS, Windows, or Chrome) : 
+Create a Github account at https://github.com/
+
+*  For more information about this process: https://git-scm.com/book/en/v2/GitHub-Account-Setup-and-Configuration  
+*  *Note - there is no need to configure SSH access, so skip the SSH steps in the protocol*
+
+***Steps 2+3 are only for those with MacOS and Windows :*** 
 
 2. Install Github Desktop using information here : https://docs.github.com/en/desktop/getting-started-with-github-desktop/installing-github-desktop
 
@@ -54,7 +59,7 @@ https://docs.github.com/en/desktop/getting-started-with-github-desktop/authentic
 * Adopted as key tool in many fields (graduate school, industry, data science)
 
 
-## Downloading/Installing R and Rstudio
+## Downloading/Installing R and Rstudio for MacOS and Windows
 
 To install and run Rstudio, base R needs to be installed first.
 
@@ -69,7 +74,7 @@ Click on the .pkg file relevant to your current OS (10.11 or higher vs. 10.9 or 
    **Else** :  
 Click the blue highlighted "install R for the first time"  
 
-4. After package download, standard installer package will run to walk through the installation. 
+4. After package download, standard installer package will run to walk through the installation. For Windows users, you may need to locate the file in your downloads and double click to run. 
 
 **Installing RStudio** 
 
@@ -81,24 +86,35 @@ Click the blue highlighted "install R for the first time"
 
 4. Click on the Installer relevant to your operating system  
 
-5. Installer should install RStudio automatically  
+5. For MacOS users, installer should install RStudio automatically. For Windows users, you may need to locate the file in your downloads and double click to run. 
 
-**Installing libraries**
+## Accessing R and Rstudio for Chrome OS
 
-R has base packages that come automatically installed. However, there are many additional packages that can be installed, as needed. One set of packages that we will be using today is called the tidyverse - a set of packages that allow for easy import, tidying, and transformation of data sets. 
+**If plan to use Chrome OS (ie. a chromebook) this semester and have not already let me know, please send me an email ASAP.**
 
-To install a package or set of packages, open up Rstudio.
+1. Navigate to : https://rstudio.cloud/plans/free 
 
-Then, type the following into your R console (the white space under the "console" tab)
+2. Sign up for Cloud Free by creating a username and password 
+
+## Installing Packages
+
+A package is a collection of code that allows specific functions to be carried out in R (ie. plotting, summarizing data, aligning sequences, etc.) R has base packages that come automatically installed. However, there are many additional packages that can be installed, as needed. One set of packages that we will be using today is called the tidyverse - a set of packages that allow for easy import, tidying, and transformation of data sets. 
+
+To install a package or set of packages, open up Rstudio (or log in to RStudio Cloud and open a "New Project" from the New Project menu in the top left of the screen if you are a Chrome user).
+
+Once you have an open RStudio window, type the following command into your R console (the white space under the “console” tab, see image below)
+
+![Image of RStudio Interface](Console_Image.png)
+  
+**Command for package installation:**
 ```{r, eval = FALSE}
 install.packages(c("tidyverse", 'readr', 'mosaic')) 
 #this will install a collection of packages called the 'tidyverse', as well as individual packages called 'readr' and 'mosaic'.
 ```
-Note that R will tab complete commands!
 
 This download will take a little time, as we are downloading a collection of packages. We will use this collection of packages during the first week of our course!
 
-To load a specific library for use, use the `library()` command. For instance :
+To load a specific package for use, use the `library()` command in the console. For instance :
 ```{r, eval = FALSE}
 library(ggplot2) 
 #ggplot2 is a data visualization package we will use in the first week of the course
@@ -141,24 +157,15 @@ Once you open up RStudio, you will see four quadrants on your screen.
 * *Help* - displays documentation relevant to specific commands or packages.  
 * *Viewer* - allows viewing of local web content (ex. web graphics generated by specific R packages)
 
-### General R helpful hints
-
-* Avoid spaces in filenames and in naming variables
-* In naming variables, `<-` operator is traditionally used in R. You can equivalently use `=` operator. 
-* Read error messages - they often have good information!
-* A `#` operator in front of words signifies to R to not run that code - this can be used for annotating code or for troubleshooting
-* Following that, annotate your code! You may think you will remember what the code was for...you will not. Annotation will also help reinforce your coding knowledge and models best practices for data science. 
-* To run R code in Markdown or in an Rscript, hit control + enter
-
 ### Creating a dataframe
 
 Dataframes are easily created in R. A dataframe stores a table (two-dimensional array-like structure) in which each column contains values of one variable and each row contains one set of values for each column. 
 
-Dataframes are built as follows :
+Dataframes are built by typing something like this into the console :
 ```{r}
 Name <- c("Ned", "Sally", "Georgette") 
 ```
-Name is the first column. Ned, Sally, and Georgette are the values associated with the Name column. The type of variable used to represent name values is a "character". 
+Name is the first column. Ned, Sally, and Georgette are the values associated with the Name column. The type of variable used to represent name values is a "character". The `<-` symbol indicates that you are assigning the values of "Ned", "Sally", "Georgette" to the variable "Name". You can use the `<-` symbol and the `=` symbol interchangeably. 
 ```{r}
 Height <- c(67, 60, 72)
 ```
@@ -191,7 +198,7 @@ If your dataset is already prepared in a file (ex. .xlsx, .csv, .sav, .dat, etc)
 #### Working directories and paths to data
 Prior to reading in data, it helps to know where R will be looking for files to read in. All the other software on your computer does this as well (ex. you need navigate to the correct folder for attaching a file to your email), but the process is abstracted via clicking on folders/files. In R, the file path needs to be written out in code instead of clicking!
 
-For instance, if I wanted to read in or load a file from my desktop, I would use the absolute file path : 
+For instance, if I wanted to read in or load a file from my desktop, I would rype the absolute file path into the console : 
 ```{r, eval=FALSE}
 "/Users/chantalkoechli/Desktop/Rcourse/arbuthnot.csv" 
 ```
@@ -241,7 +248,7 @@ write.csv(x = data, file = "/Users/chantalkoechli/Desktop/example.csv")
 #### Excel files (.xls, .xlsx)
 
 ```{r, eval = FALSE}
-library(xlsx)
+library(xlsx) #you will need to install.packages('xlsx') if you don't already have this library installed.
 data <- read.xlsx("Users/chantalkoechli/Desktop/example.xlsx")
 ```
 
@@ -281,81 +288,16 @@ my.url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSkaiah-LcTs1aBi--L6M0
 data <- read.csv(url(my.url))
 ```
 
+### General R helpful hints
 
-#### Files formatted for other statistical software
+* Avoid spaces in filenames and in naming variables
+* In naming variables, `<-` operator is traditionally used in R. You can equivalently use `=` operator. 
+* Read error messages - they often have good information!
+* A `#` operator in front of words signifies to R to not run that code - this can be used for annotating code or for troubleshooting
+* Following that, annotate your code! You may think you will remember what the code was for...you will not. Annotation will also help reinforce your coding knowledge and models best practices for data science. 
 
-**SPSS files**
-```{r, eval = FALSE}
-# Activate the `foreign` library
-library(foreign)
-
-# Read the SPSS data
-mySPSSData <- read.spss("example.sav", to.data.frame=TRUE)
-```
-
-Writing out SPSS files
-
-```{r, eval = FALSE}
-# Activate the `foreign` library
-library(foreign)
-
-# Write the SPSS data
-write.foreign(mySPSSData, datafile = "example.sav", codefile = "code.sav",
-              package = "SPSS"
-```
-
-
-**Stata files**
-```{r, eval = FALSE}
-# Activate the `foreign` library
-library(foreign)
-
-# Read Stata data into R
-mydata <- read.dta("<Path to file>") 
-```
-
-Writing out Stata files
-
-```{r, eval = FALSE}
-# Activate the `foreign` library
-library(foreign)
-
-# Write the Stata data
-write.foreign(mydata, datafile = "example.dta", codefile = "code.dta",
-              package = "Stata")
-```
-
-**SASS**
-```{r, eval = FALSE}
-# Activate the `sas7bdat` library
-library(sas7bdat)
-
-# Read in the SAS data
-mySASData <- read.sas7bdat("example.sas7bdat")
-```
-
-```{r, eval = FALSE}
-# Activate the `foreign` library
-library(foreign)
-
-# Write the SAS data
-write.foreign(mydata, datafile = "example.sas7bdat", codefile = "code.sas7bdat",
-              package = "SAS")
-```
-
-**Minitab**
-```{r, eval = FALSE}
-# Activate the `foreign` library
-library(foreign)
-
-# Read the Minitab data
-myMTPData <- read.mtp("example2.mtp")
-```
-
-
-#### Let's practice
+### Let's practice
 <mark>Using one of the methods illustrated above, or outlined in the tutorial cited above, try loading at least three data files of interest into R from your computer. If you want to load in a file type that is not specified in any resources, ask Google. </mark>
-
 
 ### Troubleshooting
 One of R's greatest strengths is that it is freeware and has an enormous community of users that help each other out. Using Google to troubleshoot an error message, an issue, or a "how do I..." is my main go-to.  
